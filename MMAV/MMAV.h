@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 class MMAVPacketPrivate;
+class MMAVReaderPrivate;
 
 class MMAVPacket {
 public:
@@ -19,6 +20,6 @@ public:
 
 	int Read(MMAVPacket* packet);
 private:
-	AVFormatContext* formatCtx = nullptr;
+	MMAVReaderPrivate* imp = nullptr;
 };
 
