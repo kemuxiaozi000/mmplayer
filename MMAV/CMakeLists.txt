@@ -3,11 +3,8 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-include_directories(../3rdpart/ffmpeg/include)
-include_directories(../)
 # 将源代码添加到此项目的可执行文件。
-add_executable (MMPlayer "MMPlayer.cpp" "MMPlayer.h")
+add_library (MMAV MMAVReader.cpp MMAVPacket.cpp)
 
-target_link_libraries(MMPlayer MMThread)
-
+include_directories(../3rdpart/ffmpeg/include)
 # TODO: 如有需要，请添加测试并安装目标。

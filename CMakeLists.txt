@@ -8,3 +8,4 @@ project ("MMPlayer")
 # 包含子项目。
 add_subdirectory ("MMPlayer")
 add_subdirectory ("MMThread")
+add_subdirectory ("MMAV")

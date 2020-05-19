@@ -5,6 +5,7 @@
 #include <thread>
 #include <chrono>
 #include "MMThread/MMThread.h"
+#include "MMAV/MMAV.h"
 using namespace std;
 
 void threadFunction(int threadIndex) {
@@ -40,9 +41,28 @@ public:
 	}
 };
 
-int main() {
+int main2() {
 	MyMMThread t(10);
 	t.Start();
 	std::this_thread::sleep_for(std::chrono::seconds(2));
+	return 0;
+}
+
+int main() {
+	MMAVReader reader;
+	int ret = reader.Open("C://work/demo_video/test.mp4");
+	if (ret) {
+		printf("Open File Fail!!");
+		return -1;
+	}
+	while (1) {
+		MMAVPacket pkt;
+		ret = reader.Read(&pkt);
+		if (ret) {
+			break;
+		}
+		printf("Read success\n");
+	}
+	reader.Close();
 	return 0;
 }
